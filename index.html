@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <title>NearbyContacts - Find Local Service Providers</title>
     <style>
         /* General styling */
@@ -14,9 +15,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
 
         /* Layout of the landing page */
@@ -60,18 +62,20 @@
             background-color: #ff6600;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             animation: bounceIn 2s ease;
         }
 
         .cta-button:hover {
             background-color: #e65c00;
+            transform: scale(1.05);
         }
 
         .features-section {
-            background-color: white;
+            background-color: #f1f1f1;
             padding: 50px 20px;
             display: flex;
             flex-wrap: wrap;
@@ -84,7 +88,7 @@
             flex: 1 1 300px;
             margin: 20px;
             padding: 20px;
-            background-color: #f1f1f1;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
@@ -99,6 +103,12 @@
             margin-bottom: 20px;
             color: #007bff;
             animation: fadeIn 1s ease-in-out;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
         }
 
         ul {
@@ -219,7 +229,7 @@
         &copy; 2024 NearbyContacts. All Rights Reserved.
         <br>
         <small style="text-align: center;">
-            <a href="https://www.flaticon.com/free-icons/contacts" title="contacts icons">Contacts icons created by Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/contacts" title="contacts icons" style="color: white;">Contacts icons created by Freepik - Flaticon</a>
         </small>
     </footer>
 </body>
