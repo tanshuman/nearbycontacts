@@ -1,301 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
-    <title>NearbyContacts - Find Local Service Providers</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coming Soon - NearbyContacts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.6.0/dist/email.min.js"></script>
     <style>
-        /* General styling */
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            background-color: #f5f5f5;
         }
 
-        /* Layout of the landing page */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .coming-soon {
             text-align: center;
-        }
-
-        header {
-            background: linear-gradient(90deg, #007bff, #00c8ff);
-            color: white;
-            padding: 60px 20px;
-        }
-
-        .logo {
-            width: 120px; /* Adjust the size as necessary */
-            margin-bottom: 20px;
+            padding: 50px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease-in-out;
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeIn 1.5s ease-in-out;
+            font-size: 1.2rem;
+            color: #555;
         }
 
-        .cta-button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: #ff6600;
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .notify {
+            margin-top: 30px;
+        }
+
+        .notify input {
+            padding: 10px;
+            width: 250px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .notify button {
+            padding: 10px 20px;
+            background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: bounceIn 2s ease;
+            font-size: 1rem;
         }
 
-        .cta-button:hover {
-            background-color: #e65c00;
-            transform: scale(1.05);
+        .notify button:hover {
+            background-color: #0056b3;
         }
 
-        .features-section {
-            background-color: #f1f1f1;
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            text-align: left;
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        .feature {
-            flex: 1 1 300px;
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-10px);
-        }
-
-        h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #007bff;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        ul li {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-        
-        #imageModal {
-            display: none; /* Hidden by default */
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
-            justify-content: center; 
-            align-items: center; 
-        }
-
-        .modal-content {
-            background-color: white; 
-            border-radius: 10px; 
-            padding: 20px; 
-            text-align: center; 
-            width: 80%; 
-            max-width: 600px; 
-        }
-
-        .close {
-            color: #aaa; 
-            float: right; 
-            font-size: 28px; 
-            font-weight: bold; 
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black; 
-            text-decoration: none; 
-            cursor: pointer; 
+        .notify .success-message {
+            color: green;
+            margin-top: 10px;
         }
 
         footer {
-            background-color: #007bff;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9em;
-        }
-        
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounceIn {
-            0%, 20%, 50%, 80%, 100% {
-                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-                transform: translateY(0);
-            }
-            40% {
-                transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-                transform: translateY(-20px);
-            }
-            60% {
-                transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .cta-button {
-                font-size: 1.1em;
-            }
-
-            .feature {
-                margin: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .feature {
-                flex: 1 1 100%;
-            }
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="container">
-            <img src="contacts.png" alt="NearbyContacts Logo" class="logo"> <!-- Added Logo -->
-            <h1>Welcome to NearbyContacts</h1>
-            <p>Find verified local service providers like plumbers, electricians, decorators, and more in just a few clicks!</p>
-            <button id="getStartedBtn" class="cta-button">Get Started</button>
-        </div>
-    </header>
-    
-    <section class="features-section">
-        <div class="container">
-            <h2>Why Choose NearbyContacts?</h2>
-            <div class="feature">
-                <h3>Verified Providers</h3>
-                <ul>
-                    <li>Each provider is personally verified for trustworthiness</li>
-                    <li>Providing you with a reliable service directory</li>
-                </ul>
-            </div>
+    <div class="coming-soon">
+        <img src="contacts.png" alt="NearbyContacts Logo" class="logo">
+        <h1>We're Coming Soon!</h1>
+        <p>NearbyContacts is under development and will be launching shortly. Stay tuned for updates!</p>
 
-            <div class="feature">
-                <h3>Ratings and Reviews</h3>
-                <ul>
-                    <li>See what other customers say about a service provider</li>
-                    <li>Make informed decisions with detailed reviews</li>
-                </ul>
-            </div>
-
-            <div class="feature">
-                <h3>Local Professionals</h3>
-                <ul>
-                    <li>Find service providers near your location</li>
-                    <li>Support your local businesses and professionals</li>
-                </ul>
-            </div>
+        <!-- Optional Email Notification Signup -->
+        <div class="notify">
+            <p>Want to be notified when we launch?</p>
+            <form id="notify-form">
+                <input type="email" id="user_email" placeholder="Enter your email" required>
+                <button type="submit">Notify Me</button>
+            </form>
+            <p id="message" class="success-message"></p>
         </div>
-    </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Welcome to NearbyContacts!</h2>
-            <img src="qr.png" alt="Your Image" style="max-width: 100%; height: auto;"> <!-- Replace with your image URL -->
-        </div>
+        <footer>&copy; 2024 NearbyContacts. All rights reserved.</footer>
     </div>
 
-    <footer>
-        &copy; 2024 NearbyContacts. All Rights Reserved.
-        <br>
-        <small style="text-align: center;">
-            <a href="https://www.flaticon.com/free-icons/contacts" title="contacts icons" style="color: white;">Contacts icons created by Freepik - Flaticon</a>
-        </small>
-    </footer>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+        })();
 
-    <script>
-        $(document).ready(function() {
-            $("#getStartedBtn").click(function() {
-                $("#imageModal").css("display", "flex"); // Show the modal
-            });
-            
-            $(".close").click(function() {
-                $("#imageModal").css("display", "none"); // Hide the modal
-            });
-    
-            $(window).click(function(event) {
-                if (event.target == document.getElementById("imageModal")) {
-                    $("#imageModal").css("display", "none"); // Hide the modal on outside click
-                }
-            });
+        // EmailJS integration on form submit
+        document.getElementById('notify-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userEmail = document.getElementById('user_email').value;
+
+            emailjs.send("39XpYMKv5kkFac7nN", "template_9z0tnx5", {
+                user_email: userEmail
+            })
+                .then(function (response) {
+                    document.getElementById('message').textContent = "Thank you! We'll notify you when we launch.";
+                    document.getElementById('user_email').value = '';  // Clear the input field
+                }, function (error) {
+                    document.getElementById('message').textContent = "Oops! Something went wrong. Please try again.";
+                });
         });
     </script>
+
 </body>
+
 </html>
